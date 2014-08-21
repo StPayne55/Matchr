@@ -39,7 +39,7 @@
             </objects>
             <point key="canvasLocation" x="923" y="298"/>
         </scene>
-        <!--First View Controller - Home Controller-->
+        <!--First View Controller-->
         <scene sceneID="4d1-Jz-tGk">
             <objects>
                 <viewController storyboardIdentifier="firstViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jsP-Dz-DYG" customClass="DEMOFirstViewController" sceneMemberID="viewController">
@@ -81,22 +81,21 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logo Place Holder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qhd-Gn-P8F">
-                                <rect key="frame" x="27" y="112" width="293" height="102"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MatchrLogo.tiff" id="i5y-kW-aMr">
+                                <rect key="frame" x="0.0" y="106" width="320" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" red="0.95661272320000001" green="0.95661272320000001" blue="0.95661272320000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                     </view>
-                    <navigationItem key="navigationItem" title="Home Controller" id="HIf-bS-REK">
-                        <barButtonItem key="leftBarButtonItem" title="Left" id="SZg-Pf-I50">
+                    <navigationItem key="navigationItem" id="HIf-bS-REK">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="SZg-Pf-I50">
+                            <color key="tintColor" red="0.90196084980000002" green="0.5176470876" blue="0.7254902124" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="jsP-Dz-DYG" id="hwP-5s-SlX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Right" id="keH-6D-X6t">
+                        <barButtonItem key="rightBarButtonItem" id="keH-6D-X6t">
+                            <color key="tintColor" red="0.2823529541" green="0.60392159219999997" blue="0.78431379800000001" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="presentRightMenuViewController:" destination="jsP-Dz-DYG" id="UYT-AK-fzA"/>
                             </connections>
@@ -106,7 +105,8 @@
                         <outlet property="blueImage" destination="sCD-GZ-hDv" id="y3s-kU-4Ht"/>
                         <outlet property="lblLogin" destination="2Iv-8a-ePz" id="Opi-RH-Gul"/>
                         <outlet property="loginComponents" destination="yIB-D9-0wM" id="HCu-NP-T7W"/>
-                        <outlet property="logo" destination="Qhd-Gn-P8F" id="Vb3-6s-hrF"/>
+                        <outlet property="logo" destination="i5y-kW-aMr" id="hO4-e6-GST"/>
+                        <outlet property="menuButton" destination="SZg-Pf-I50" id="t1c-To-mIN"/>
                         <outlet property="pinkImage" destination="IjF-pk-2dh" id="j3g-qD-aIx"/>
                     </connections>
                 </viewController>
@@ -200,6 +200,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MatchrLogo.tiff" width="1022" height="337"/>
         <image name="matchrSplashBlue.png" width="329" height="782"/>
         <image name="matchrSplashPink.png" width="309" height="783"/>
         <image name="wood.png" width="900" height="469"/>
