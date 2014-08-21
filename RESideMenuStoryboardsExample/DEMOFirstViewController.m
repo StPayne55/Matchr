@@ -12,7 +12,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *blueImage;
 @property (weak, nonatomic) IBOutlet UIImageView *pinkImage;
 @property (weak, nonatomic) IBOutlet UIView *loginComponents;
-@property (weak, nonatomic) IBOutlet UILabel *logo;
+@property (weak, nonatomic) IBOutlet UIImageView *logo;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblLogin;
 
@@ -27,7 +28,8 @@ CGPoint logoOrigin;
 -(void)viewDidLoad{
     _loginComponents.alpha = 0;
     _logo.alpha = 0;
-}
+    self.navigationController.navigationBarHidden = YES;
+    }
 
 -(void)viewWillAppear:(BOOL)animated{
     self.view.backgroundColor = [UIColor whiteColor];
@@ -50,8 +52,8 @@ CGPoint logoOrigin;
         _pinkImage.center = pinkOrigin;
         _loginComponents.alpha = 1;
     }completion:^(BOOL finished) {
-        [UIView animateWithDuration:.5 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:.9 options:nil animations:^{
-            _loginComponents.center = loginOrigin;
+        [UIView animateWithDuration:.5 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:.9 options:nil animations:^{
+_loginComponents.center = loginOrigin;
         }completion:nil];
     }];
     
