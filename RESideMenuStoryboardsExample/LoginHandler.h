@@ -2,7 +2,7 @@
 //  LoginHandler.h
 //  Matchr
 //
-//  Created by Steve Payne on 8/22/14.
+//  Created by Steve Payne on 9/6/14.
 //  Copyright (c) 2014 Steve Payne. All rights reserved.
 //
 
@@ -19,6 +19,6 @@
 
 -(void)createNewUser;
 -(void)logUserIn;
-
+-(void)logUserOut;
 
 @end
