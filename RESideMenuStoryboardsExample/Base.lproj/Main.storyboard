@@ -17,7 +17,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431" y="298"/>
+            <point key="canvasLocation" x="495" y="222"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jO9-85-nrD">
@@ -48,38 +48,49 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matchrSplashBlue.png" id="sCD-GZ-hDv">
-                                <rect key="frame" x="-116" y="0.0" width="370" height="568"/>
+                                <rect key="frame" x="-98" y="-6" width="370" height="580"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matchrSplashPink.png" id="IjF-pk-2dh">
-                                <rect key="frame" x="27" y="0.0" width="370" height="568"/>
+                                <rect key="frame" x="44" y="-6" width="370" height="580"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="yIB-D9-0wM">
+                            <view alpha="0.24999999999999967" contentMode="scaleToFill" id="yIB-D9-0wM" customClass="FXBlurView">
                                 <rect key="frame" x="80" y="242" width="160" height="186"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Iv-8a-ePz">
-                                        <rect key="frame" x="10" y="44" width="48" height="21"/>
+                                        <rect key="frame" x="10" y="20" width="48" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" id="1Rc-RP-9fz">
-                                        <rect key="frame" x="10" y="111" width="141" height="30"/>
+                                        <rect key="frame" x="10" y="87" width="141" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" id="ikL-Im-9xK">
-                                        <rect key="frame" x="10" y="73" width="141" height="30"/>
+                                        <rect key="frame" x="10" y="49" width="141" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JeA-WV-MyS">
+                                        <rect key="frame" x="56" y="136" width="49" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="jsP-Dz-DYG" eventType="touchUpInside" id="bq2-M7-sZD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MatchrLogo.tiff" id="i5y-kW-aMr">
                                 <rect key="frame" x="0.0" y="106" width="320" height="115"/>
@@ -108,6 +119,8 @@
                         <outlet property="logo" destination="i5y-kW-aMr" id="hO4-e6-GST"/>
                         <outlet property="menuButton" destination="SZg-Pf-I50" id="t1c-To-mIN"/>
                         <outlet property="pinkImage" destination="IjF-pk-2dh" id="j3g-qD-aIx"/>
+                        <outlet property="txtPassword" destination="1Rc-RP-9fz" id="10a-RY-pox"/>
+                        <outlet property="txtUsername" destination="ikL-Im-9xK" id="anG-EN-Skh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awc-v8-Z61" userLabel="First Responder" sceneMemberID="firstResponder"/>
