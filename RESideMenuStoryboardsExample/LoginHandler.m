@@ -2,7 +2,7 @@
 //  LoginHandler.m
 //  Matchr
 //
-//  Created by Steve Payne on 8/22/14.
+//  Created by Steve Payne on 9/6/14.
 //  Copyright (c) 2014 Steve Payne. All rights reserved.
 //
 
@@ -50,6 +50,14 @@
             [alert show];
         }
     }];
+    
+}
+
+-(void)logUserOut{
+    NSLog(@"Current User Before Logout: %@", [PFUser currentUser]);
+    [PFUser logOut];
+    PFUser *currentUser = [PFUser currentUser];
+    NSLog(@"Current User After Logout: %@", [PFUser currentUser]);
     
 }
 
