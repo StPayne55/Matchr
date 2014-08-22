@@ -481,25 +481,25 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    IF_IOS7_OR_GREATER(
-       if (self.interactivePopGestureRecognizerEnabled && [self.contentViewController isKindOfClass:[UINavigationController class]]) {
-           UINavigationController *navigationController = (UINavigationController *)self.contentViewController;
-           if (navigationController.viewControllers.count > 1 && navigationController.interactivePopGestureRecognizer.enabled) {
-               return NO;
-           }
-       }
-    );
-  
-    if (self.panFromEdge && [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && !self.visible) {
-        CGPoint point = [touch locationInView:gestureRecognizer.view];
-        if (point.x < 20.0 || point.x > self.view.frame.size.width - 20.0) {
-            return YES;
-        } else {
-            return NO;
-        }
-    }
-    
-    return YES;
+//    IF_IOS7_OR_GREATER(
+//       if (self.interactivePopGestureRecognizerEnabled && [self.contentViewController isKindOfClass:[UINavigationController class]]) {
+//           UINavigationController *navigationController = (UINavigationController *)self.contentViewController;
+//           if (navigationController.viewControllers.count > 1 && navigationController.interactivePopGestureRecognizer.enabled) {
+//               return NO;
+//           }
+//       }
+//    );
+//  
+//    if (self.panFromEdge && [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && !self.visible) {
+//        CGPoint point = [touch locationInView:gestureRecognizer.view];
+//        if (point.x < 20.0 || point.x > self.view.frame.size.width - 20.0) {
+//            return YES;
+//        } else {
+//            return NO;
+//        }
+//    }
+//    
+    return NO;
 }
 
 #pragma mark -
