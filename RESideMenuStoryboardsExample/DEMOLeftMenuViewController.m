@@ -10,8 +10,14 @@
 #import "DEMOFirstViewController.h"
 #import "DEMOSecondViewController.h"
 #import "UIViewController+RESideMenu.h"
+#import <Parse/Parse.h>
+#import "LoginHandler.h"
+
+
+LoginHandler *loginSession;
 
 @interface DEMOLeftMenuViewController ()
+
 
 @property (strong, readwrite, nonatomic) UITableView *tableView;
 
@@ -36,6 +42,7 @@
         tableView;
     });
     [self.view addSubview:self.tableView];
+    loginSession = [[LoginHandler alloc]init];
 }
 
 #pragma mark -
@@ -46,9 +53,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0:
+            
             [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"firstViewController"]]
                                                          animated:YES];
             [self.sideMenuViewController hideMenuViewController];
+            [loginSession logUserOut];
             break;
         case 1:
             [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"secondViewController"]]
@@ -93,8 +102,8 @@
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"Home", @"Calendar", @"Profile", @"Settings", @"Log Out"];
-    NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconSettings", @"IconEmpty"];
+    NSArray *titles = @[@"Log Out", @"Profile", @"Matches", @"Rate Others", @"Settings"];
+    NSArray *images = @[@"IconEmpty", @"IconProfile", @"IconCalendar", @"IconHome", @"IconSettings"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     
