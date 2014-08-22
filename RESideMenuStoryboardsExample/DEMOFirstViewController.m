@@ -1,9 +1,9 @@
 //
 //  DEMOFirstViewController.m
-//  RESideMenuStoryboards
+//  Matchr
 //
-//  Created by Roman Efimov on 10/9/13.
-//  Copyright (c) 2013 Roman Efimov. All rights reserved.
+//  Created by Steve Payne on 8/22/14.
+//  Copyright (c) 2014 Steve Payne. All rights reserved.
 //
 
 #import "DEMOFirstViewController.h"
