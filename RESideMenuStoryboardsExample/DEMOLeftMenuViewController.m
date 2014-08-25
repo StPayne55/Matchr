@@ -43,6 +43,9 @@ LoginHandler *loginSession;
     });
     [self.view addSubview:self.tableView];
     loginSession = [[LoginHandler alloc]init];
+    
+    
+    
 }
 
 #pragma mark -
@@ -51,19 +54,36 @@ LoginHandler *loginSession;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+   
     switch (indexPath.row) {
+        //Logout Selected
         case 0:
-            
             [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"firstViewController"]]
                                                          animated:YES];
             [self.sideMenuViewController hideMenuViewController];
             [loginSession logUserOut];
             break;
+        //Matches Selected
         case 1:
             [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"secondViewController"]]
                                                          animated:YES];
             [self.sideMenuViewController hideMenuViewController];
             break;
+            
+        //Profile Selected
+        case 2:
+            [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"firstViewController"]]
+                                                         animated:YES];
+            
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+            
+        //Rate Others Selected
+        case 3:
+            
+            break;
+            
+        //Settings Selected
         default:
             break;
     }
@@ -102,8 +122,8 @@ LoginHandler *loginSession;
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
     
-    NSArray *titles = @[@"Log Out", @"Profile", @"Matches", @"Rate Others", @"Settings"];
-    NSArray *images = @[@"IconEmpty", @"IconProfile", @"IconCalendar", @"IconHome", @"IconSettings"];
+    NSArray *titles = @[@"Log Out", @"Matches", @"Profile", @"Rate Others", @"Settings"];
+    NSArray *images = @[@"IconEmpty", @"IconCalendar", @"IconProfile", @"IconHome", @"IconSettings"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     

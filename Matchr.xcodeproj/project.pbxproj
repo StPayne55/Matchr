@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		274E3CF019AB824700A8A6D7 /* imageFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E3CEF19AB824700A8A6D7 /* imageFrame.png */; };
+		274E3CF319ABC0E500A8A6D7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E3CF219ABC0E500A8A6D7 /* ProfileViewController.m */; };
 		3076CDC21809B47200527E6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC11809B47200527E6C /* Foundation.framework */; };
 		3076CDC41809B47200527E6C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC31809B47200527E6C /* CoreGraphics.framework */; };
 		3076CDC61809B47200527E6C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC51809B47200527E6C /* UIKit.framework */; };
@@ -69,6 +71,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		274E3CEF19AB824700A8A6D7 /* imageFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFrame.png; sourceTree = "<group>"; };
+		274E3CF119ABC0E500A8A6D7 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		274E3CF219ABC0E500A8A6D7 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		3076CDBE1809B47200527E6C /* Matchr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3076CDC11809B47200527E6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3076CDC31809B47200527E6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,12 +143,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				911A276619A922B00072BA4C /* QuartzCore.framework in Frameworks */,
 				911A276119A922B00072BA4C /* AudioToolbox.framework in Frameworks */,
 				911A276219A922B00072BA4C /* CFNetwork.framework in Frameworks */,
 				911A276319A922B00072BA4C /* CoreLocation.framework in Frameworks */,
 				911A276419A922B00072BA4C /* libz.dylib in Frameworks */,
 				911A276519A922B00072BA4C /* MobileCoreServices.framework in Frameworks */,
-				911A276619A922B00072BA4C /* QuartzCore.framework in Frameworks */,
 				911A276D19A923760072BA4C /* Parse.framework in Frameworks */,
 				911A276719A922B00072BA4C /* Security.framework in Frameworks */,
 				911A276819A922B00072BA4C /* StoreKit.framework in Frameworks */,
@@ -173,6 +178,8 @@
 				911A275119A9222F0072BA4C /* LoginHandler.h */,
 				911A275219A9222F0072BA4C /* LoginHandler.m */,
 				3076CDD31809B47200527E6C /* Main.storyboard */,
+				274E3CF119ABC0E500A8A6D7 /* ProfileViewController.h */,
+				274E3CF219ABC0E500A8A6D7 /* ProfileViewController.m */,
 				911A275419A922390072BA4C /* FXBlurView */,
 				911A277719A924220072BA4C /* MatchrImages */,
 				3076CE061809B5C400527E6C /* RESideMenu */,
@@ -295,6 +302,7 @@
 			children = (
 				911A276E19A924220072BA4C /* Matchr Icons */,
 				914FF700198E877E00C7402D /* wood2.png */,
+				274E3CEF19AB824700A8A6D7 /* imageFrame.png */,
 				914FF6FE198E864500C7402D /* wood.png */,
 				911A277819A924220072BA4C /* bluePuzzle.png */,
 				911A277919A924220072BA4C /* MatchrLogo.tiff */,
@@ -400,6 +408,7 @@
 				911A278119A924230072BA4C /* Icon-40@2x.png in Resources */,
 				911A278B19A924230072BA4C /* matchrSplashPink.png in Resources */,
 				911A278619A924230072BA4C /* Icon-Small.png in Resources */,
+				274E3CF019AB824700A8A6D7 /* imageFrame.png in Resources */,
 				911A278419A924230072BA4C /* Icon-76.png in Resources */,
 				911A278F19A924230072BA4C /* wood2.png in Resources */,
 				911A278E19A924230072BA4C /* wood.png in Resources */,
@@ -432,6 +441,7 @@
 				911A275319A9222F0072BA4C /* LoginHandler.m in Sources */,
 				30DF13B218DE1B0C0018463C /* DEMORightMenuViewController.m in Sources */,
 				3076CE041809B59E00527E6C /* DEMORootViewController.m in Sources */,
+				274E3CF319ABC0E500A8A6D7 /* ProfileViewController.m in Sources */,
 				3076CE0F1809B5C500527E6C /* UIViewController+RESideMenu.m in Sources */,
 				3076CE0E1809B5C500527E6C /* RESideMenu.m in Sources */,
 				3076CE0D1809B5C500527E6C /* RECommonFunctions.m in Sources */,

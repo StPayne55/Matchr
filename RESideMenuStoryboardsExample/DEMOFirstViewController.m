@@ -10,6 +10,8 @@
 #import "LoginHandler.h"
 #import <Parse/Parse.h>
 #import "FXBlurView.h"
+#import <QuartzCore/QuartzCore.h>
+#import "ProfileViewController.h"
 
 @interface DEMOFirstViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *blueImage;
@@ -25,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtLastName;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextField *txtNewPassword;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicSnapPoint;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *txtConfirmPassword;
 
@@ -51,9 +55,18 @@ CGPoint logoOrigin;
 CGPoint signupViewOrigin;
 LoginHandler *loginObject;
 BOOL newUserViewIsVisible;
-
+PFUser *user;
 
 -(void)viewDidLoad{
+    
+    user = [PFUser currentUser];
+    
+    //check to see if user is currently logged in
+    if (user) {
+        //user is logged in, skip login screen and go straight to profile
+        NSLog(@"user is signed in");
+        [self userLoggedIn];
+    }else{
     _loginComponents.dynamic = YES;
     _loginComponents.iterations = 2;
     _loginComponents.alpha = 0;
@@ -82,7 +95,8 @@ BOOL newUserViewIsVisible;
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-
+    }
+    
 }
 
 
@@ -113,10 +127,7 @@ BOOL newUserViewIsVisible;
                                                  name:@"loginSuccessful"
                                                object:nil];
     
-    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wood2.png"]];
-    background.frame = self.view.frame;
-    [self.view addSubview:background];
-    [self.view sendSubviewToBack:background];
+    
     
     //set the properties on the login handler to match the current user.
     if (!newUserViewIsVisible){
@@ -140,29 +151,148 @@ BOOL newUserViewIsVisible;
 -(void)userLoggedIn{
     NSLog(@"User logged in....");
     
-    //hide login view and display profile
+    //load profile info and picture
+    ProfileViewController *profileView = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
     
-    [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:.6 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
-        
-        _blueImage.center = CGPointMake(-600, _blueImage.center.y);
-        _pinkImage.center = CGPointMake(600, _pinkImage.center.y);
-        _loginComponents.center = CGPointMake(_loginComponents.center.x, 900);
-        _logo.frame = CGRectMake(_logo.frame.origin.x, _logo.frame.origin.y, _logo.frame.size.width *.9, _logo.frame.size.height);
-        _logo.center = CGPointMake(_logo.center.x, -600);
-        _logo.transform = CGAffineTransformScale(_logo.transform, 1.2, 1.2);
-        self.navigationController.navigationBarHidden = NO;
-        _loginComponents.center = CGPointMake(loginOrigin.x, 800);
-    }completion:nil];
+    //create profile view card
+    UIView *profileInfo = [[UIView alloc]init];
+    profileInfo = profileView.view;
+    
+    //populate card labels with corresponding data for the current user
+    NSString *fullName = [NSString stringWithFormat:@"%@ %@", [[PFUser currentUser] objectForKey:@"firstName"], [[PFUser currentUser] objectForKey:@"lastName"] ];
+    NSString *occupation = [NSString stringWithFormat:@"%@", [[PFUser currentUser] objectForKey:@"occupation"]];
+    NSString *age = [NSString stringWithFormat:@"%@ Years Old", [[PFUser currentUser] objectForKey:@"age"]];
+    NSString *major = [NSString stringWithFormat:@"Currently Studying %@", [[PFUser currentUser] objectForKey:@"major"]];
+    NSString *preference = [NSString stringWithFormat:@"Interested In %@", [[PFUser currentUser] objectForKey:@"preference"]];
+    
+    //set labels with data from the current user object
+    profileView.profileFullName.text = fullName;
+    profileView.profileOccupation.text = occupation;
+    profileView.profileAge.text = age;
+    profileView.profileMajor.text = major;
+    profileView.profilePreference.text = preference;
 
-    [[NSNotificationCenter defaultCenter] removeObserver:@"loginSuccessful"];
+    //hide login view
+    PFImageView *profileImageView = [[PFImageView alloc] init];
     
-    //make sure all blurred views are disabled since they're VERY cpu intensive if left unchecked
-    for (FXBlurView *blurView in self.view.subviews){
-        if ([blurView isKindOfClass:[FXBlurView class]]){
-        blurView.dynamic = NO;
+    // grab profile pic from current user object and display profile
+    PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePic"];
+    if (imageFile) {
+        profileImageView.file = imageFile;
+        [profileImageView loadInBackground];
+        NSLog(@"profilePic: %@", profileImageView.file);
+        
+        UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wood2.png"]];
+        background.frame = self.view.frame;
+        UIImageView *profilePicImageViewFrame = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imageFrame.png"]];
+        [background addSubview:profilePicImageViewFrame];
+        
+        [self.view addSubview:background];
+        [self.view sendSubviewToBack:background];
+        [self.view addSubview:profileImageView];
+        [profilePicImageViewFrame setTransform:CGAffineTransformMakeScale(5, 5)];
+        [self.view addSubview:profileInfo];
+        [profileInfo setTransform:CGAffineTransformMakeScale(2.0f, 2.0f)];
+        [self.view bringSubviewToFront:profileInfo];
+        
+        
+        [UIView animateWithDuration:.7 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:.9 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+            [profileInfo setTransform:CGAffineTransformMakeScale(1.0f, 1.0f)];
+            [profilePicImageViewFrame setTransform:CGAffineTransformMakeScale(1, 1)];
+            profileImageView.frame = CGRectMake(self.view.center.x/4, background.center.y/2, 190, 190);
+            profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2;
+            profileImageView.clipsToBounds = YES;
+            profileImageView.layer.masksToBounds = YES;
+            profileImageView.center = _profilePicSnapPoint.center;
+            [profileImageView setContentMode:UIViewContentModeScaleAspectFill];
+            
+            profilePicImageViewFrame.frame = CGRectMake(self.view.center.x/4, self.view.center.y/2, 215, 225);
+            profilePicImageViewFrame.clipsToBounds = YES;
+            profilePicImageViewFrame.layer.masksToBounds = YES;
+            profilePicImageViewFrame.center = _profilePicSnapPoint.center;
+        }completion:nil];
+        
+        [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:.6 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+            
+            _blueImage.center = CGPointMake(-600, _blueImage.center.y);
+            _pinkImage.center = CGPointMake(600, _pinkImage.center.y);
+            _loginComponents.center = CGPointMake(_loginComponents.center.x, 900);
+            _logo.frame = CGRectMake(_logo.frame.origin.x, _logo.frame.origin.y, _logo.frame.size.width *.9, _logo.frame.size.height);
+            _logo.center = CGPointMake(_logo.center.x, -600);
+            _logo.transform = CGAffineTransformScale(_logo.transform, 1.2, 1.2);
+            self.navigationController.navigationBarHidden = NO;
+            _loginComponents.center = CGPointMake(loginOrigin.x, 800);
+            //_profileView.alpha = 1;
+            
+            
+        }completion:nil];
+        
+        //remove login observer
+        [[NSNotificationCenter defaultCenter] removeObserver:@"loginSuccessful"];
+        
+        //make sure all blurred views are disabled since they're VERY cpu intensive if left unchecked
+        for (FXBlurView *blurView in self.view.subviews){
+            if ([blurView isKindOfClass:[FXBlurView class]]){
+                blurView.dynamic = NO;
+            }
         }
+
+        
+        
+        
+    } else {
+        profileImageView.image = [UIImage imageNamed:@"MatchrLogo.tiff"];
+        UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wood2.png"]];
+        background.frame = self.view.frame;
+        [self.view addSubview:background];
+        [self.view sendSubviewToBack:background];
+        [self.view addSubview:profileImageView];
+        
+        [UIView animateWithDuration:.7 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:.9 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+            profileImageView.frame = CGRectMake(self.view.center.x/4, background.center.y/2, 190, 190);
+            profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2;
+            profileImageView.clipsToBounds = YES;
+            profileImageView.layer.masksToBounds = YES;
+            profileImageView.center = _profilePicSnapPoint.center;
+            
+            UIImageView *profilePicImageViewFrame = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imageFrame.png"]];
+            [background addSubview:profilePicImageViewFrame];
+            profilePicImageViewFrame.frame = CGRectMake(self.view.center.x/4, self.view.center.y/2, 215, 225);
+            profilePicImageViewFrame.clipsToBounds = YES;
+            profilePicImageViewFrame.layer.masksToBounds = YES;
+            profilePicImageViewFrame.center = _profilePicSnapPoint.center;
+        }completion:nil];
+        
+        [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:.6 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+            
+            _blueImage.center = CGPointMake(-600, _blueImage.center.y);
+            _pinkImage.center = CGPointMake(600, _pinkImage.center.y);
+            _loginComponents.center = CGPointMake(_loginComponents.center.x, 900);
+            _logo.frame = CGRectMake(_logo.frame.origin.x, _logo.frame.origin.y, _logo.frame.size.width *.9, _logo.frame.size.height);
+            _logo.center = CGPointMake(_logo.center.x, -600);
+            _logo.transform = CGAffineTransformScale(_logo.transform, 1.2, 1.2);
+            self.navigationController.navigationBarHidden = NO;
+            _loginComponents.center = CGPointMake(loginOrigin.x, 800);
+            //_profileView.alpha = 1;
+            
+            
+        }completion:nil];
+        
+        //remove login observer
+        [[NSNotificationCenter defaultCenter] removeObserver:@"loginSuccessful"];
+        
+        //make sure all blurred views are disabled since they're VERY cpu intensive if left unchecked
+        for (FXBlurView *blurView in self.view.subviews){
+            if ([blurView isKindOfClass:[FXBlurView class]]){
+                blurView.dynamic = NO;
+            }
+        }
+        
+        
+        
     }
-}
+    
+   }
 
 
 -(void)newUserCreated{
@@ -230,6 +360,7 @@ BOOL newUserViewIsVisible;
     _signUpView.clipsToBounds = YES;
     _signUpView.dynamic = NO;
     _signUpButton.center = CGPointMake(_signUpView.center.x*1.5, _signUpButton.center.y);
+
 }
 
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -39,6 +39,68 @@
             </objects>
             <point key="canvasLocation" x="923" y="298"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="Ezn-c7-Mms">
+            <objects>
+                <viewController restorationIdentifier="ProfileViewController" storyboardIdentifier="ProfileViewController" id="7Tx-dp-xmP" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="ProfileViewController" id="Ja4-CU-AFF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="gV9-by-PzX">
+                                <rect key="frame" x="40" y="289" width="240" height="234"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Vk-pp-fQO">
+                                        <rect key="frame" x="0.0" y="11" width="240" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dxh-6Z-5f3">
+                                        <rect key="frame" x="20" y="86" width="200" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major Of Study" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FGJ-Tt-Z1y">
+                                        <rect key="frame" x="20" y="117" width="200" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preference" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n7X-RA-HUs">
+                                        <rect key="frame" x="20" y="167" width="200" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RVK-UM-cxo">
+                                        <rect key="frame" x="20" y="55" width="200" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mainProfileView" destination="gV9-by-PzX" id="vRq-wG-El0"/>
+                        <outlet property="profileAge" destination="RVK-UM-cxo" id="aFp-b7-uwS"/>
+                        <outlet property="profileFullName" destination="2Vk-pp-fQO" id="WwF-Kk-yWk"/>
+                        <outlet property="profileMajor" destination="FGJ-Tt-Z1y" id="Lwt-An-NlL"/>
+                        <outlet property="profileOccupation" destination="Dxh-6Z-5f3" id="nyv-dX-TrU"/>
+                        <outlet property="profilePreference" destination="n7X-RA-HUs" id="rGe-Jg-iU7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="br1-al-e5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1836" y="298"/>
+        </scene>
         <!--First View Controller-->
         <scene sceneID="4d1-Jz-tGk">
             <objects>
@@ -47,6 +109,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="koX-Et-kcv">
+                                <rect key="frame" x="117" y="136" width="87" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matchrSplashBlue.png" id="sCD-GZ-hDv">
                                 <rect key="frame" x="-98" y="-6" width="370" height="580"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,6 +268,7 @@
                         <outlet property="logo" destination="i5y-kW-aMr" id="hO4-e6-GST"/>
                         <outlet property="menuButton" destination="SZg-Pf-I50" id="t1c-To-mIN"/>
                         <outlet property="pinkImage" destination="IjF-pk-2dh" id="j3g-qD-aIx"/>
+                        <outlet property="profilePicSnapPoint" destination="koX-Et-kcv" id="vgc-23-uMR"/>
                         <outlet property="signUpButton" destination="nkL-V0-Ssf" id="JzG-FX-V90"/>
                         <outlet property="signUpView" destination="XCg-9f-Eh0" id="MfU-3W-YOv"/>
                         <outlet property="txtConfirmPassword" destination="K62-zX-9Du" id="Y1L-8O-Tmm"/>
@@ -247,7 +314,7 @@
             </objects>
             <point key="canvasLocation" x="929" y="1685"/>
         </scene>
-        <!--Second Controller-->
+        <!--Second View Controller - Second Controller-->
         <scene sceneID="ajy-0O-wjT">
             <objects>
                 <viewController restorationIdentifier="secondViewController" storyboardIdentifier="secondViewController" id="yGP-ij-jME" customClass="DEMOSecondViewController" sceneMemberID="viewController">
@@ -276,11 +343,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Left" id="3gh-ed-0Ek">
                             <connections>
                                 <action selector="presentLeftMenuViewController:" destination="yGP-ij-jME" id="IrF-Ol-AZY"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Right" id="9A7-Ch-RNn">
-                            <connections>
-                                <action selector="presentRightMenuViewController:" destination="yGP-ij-jME" id="qbh-hR-Hxz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -313,9 +375,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>
