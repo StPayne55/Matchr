@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>8B127750-5CC7-4FB6-AE1D-5DC62E873A35</string>
+	<string>2389A110-49BC-4619-B66E-1CA367D043E8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Matchr</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>BBCE298E-41F3-481F-914D-F368B90867F3</key>
-		<string>https://github.com/stpayne55/Matchr.git</string>
+		<key>72D4ECDB-C09A-41F3-9198-8239939454C9</key>
+		<string>https://github.com/StPayne55/Matchr.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Matchr.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>BBCE298E-41F3-481F-914D-F368B90867F3</key>
+		<key>72D4ECDB-C09A-41F3-9198-8239939454C9</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/stpayne55/Matchr.git</string>
+	<string>https://github.com/StPayne55/Matchr.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>BBCE298E-41F3-481F-914D-F368B90867F3</string>
+	<string>72D4ECDB-C09A-41F3-9198-8239939454C9</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>BBCE298E-41F3-481F-914D-F368B90867F3</string>
+			<string>72D4ECDB-C09A-41F3-9198-8239939454C9</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Matchr</string>
+			<string>Dev</string>
 		</dict>
 	</array>
 </dict>
