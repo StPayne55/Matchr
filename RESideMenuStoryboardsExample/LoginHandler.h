@@ -12,6 +12,8 @@
 
 @interface LoginHandler : NSObject
 
+@property NSString *firstName;
+@property NSString *lastName;
 @property NSString *username;
 @property NSString *password;
 @property NSString *email;

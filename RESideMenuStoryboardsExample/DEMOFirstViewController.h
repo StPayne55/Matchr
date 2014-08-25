@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
 
-@interface DEMOFirstViewController : UIViewController
+@interface DEMOFirstViewController : UIViewController <UITextFieldDelegate>
 
 @end

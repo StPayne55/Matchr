@@ -19,14 +19,17 @@
     user.username = _username;
     user.password = _password;
     user.email = _email;
-    
-    // other fields can be set just like with PFObject
+    user[@"firstName"] = _firstName;
+    user[@"lastName"] = _lastName;
     user[@"profilePic"] = _profilePic;
     
     //create a new user with the entered credentials
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            // Hooray! Let them use the app now.
+            // broadcast new user creation success to any view controllers listening for this message
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"newUserCreated"
+             object:self];
         } else {
             NSString *errorString = [error userInfo][@"error"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uh Oh!" message:errorString delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
