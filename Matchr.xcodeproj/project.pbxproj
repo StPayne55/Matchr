@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		274E3CF019AB824700A8A6D7 /* imageFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E3CEF19AB824700A8A6D7 /* imageFrame.png */; };
 		274E3CF319ABC0E500A8A6D7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E3CF219ABC0E500A8A6D7 /* ProfileViewController.m */; };
+		274E3D6B19AE5ADF00A8A6D7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274E3D6A19AE5ADF00A8A6D7 /* Bolts.framework */; };
+		274E3D6F19AE615A00A8A6D7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274E3D6E19AE615A00A8A6D7 /* FacebookSDK.framework */; };
+		274E3DD919AFA10B00A8A6D7 /* DEMOThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E3DD819AFA10B00A8A6D7 /* DEMOThirdViewController.m */; };
+		274E3DDF19AFB31100A8A6D7 /* menuIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 274E3DDE19AFB31100A8A6D7 /* menuIcon.png */; };
+		274E3DE219AFB58C00A8A6D7 /* DEMOFourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E3DE119AFB58C00A8A6D7 /* DEMOFourthViewController.m */; };
 		3076CDC21809B47200527E6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC11809B47200527E6C /* Foundation.framework */; };
 		3076CDC41809B47200527E6C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC31809B47200527E6C /* CoreGraphics.framework */; };
 		3076CDC61809B47200527E6C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3076CDC51809B47200527E6C /* UIKit.framework */; };
@@ -74,6 +79,13 @@
 		274E3CEF19AB824700A8A6D7 /* imageFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFrame.png; sourceTree = "<group>"; };
 		274E3CF119ABC0E500A8A6D7 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		274E3CF219ABC0E500A8A6D7 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		274E3D6A19AE5ADF00A8A6D7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		274E3D6E19AE615A00A8A6D7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		274E3DD719AFA10B00A8A6D7 /* DEMOThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMOThirdViewController.h; path = ../DEMOThirdViewController.h; sourceTree = "<group>"; };
+		274E3DD819AFA10B00A8A6D7 /* DEMOThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMOThirdViewController.m; path = ../DEMOThirdViewController.m; sourceTree = "<group>"; };
+		274E3DDE19AFB31100A8A6D7 /* menuIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIcon.png; sourceTree = "<group>"; };
+		274E3DE019AFB58C00A8A6D7 /* DEMOFourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DEMOFourthViewController.h; path = ../DEMOFourthViewController.h; sourceTree = "<group>"; };
+		274E3DE119AFB58C00A8A6D7 /* DEMOFourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DEMOFourthViewController.m; path = ../DEMOFourthViewController.m; sourceTree = "<group>"; };
 		3076CDBE1809B47200527E6C /* Matchr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3076CDC11809B47200527E6C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3076CDC31809B47200527E6C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,6 +155,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274E3D6F19AE615A00A8A6D7 /* FacebookSDK.framework in Frameworks */,
+				274E3D6B19AE5ADF00A8A6D7 /* Bolts.framework in Frameworks */,
 				911A276619A922B00072BA4C /* QuartzCore.framework in Frameworks */,
 				911A276119A922B00072BA4C /* AudioToolbox.framework in Frameworks */,
 				911A276219A922B00072BA4C /* CFNetwork.framework in Frameworks */,
@@ -200,6 +214,8 @@
 		3076CDC01809B47200527E6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				274E3D6E19AE615A00A8A6D7 /* FacebookSDK.framework */,
+				274E3D6A19AE5ADF00A8A6D7 /* Bolts.framework */,
 				911A276C19A923760072BA4C /* Parse.framework */,
 				911A275819A922B00072BA4C /* AudioToolbox.framework */,
 				911A275919A922B00072BA4C /* CFNetwork.framework */,
@@ -250,6 +266,10 @@
 				3076CDF81809B59E00527E6C /* DEMOFirstViewController.m */,
 				3076CDFF1809B59E00527E6C /* DEMOSecondViewController.h */,
 				3076CE001809B59E00527E6C /* DEMOSecondViewController.m */,
+				274E3DD719AFA10B00A8A6D7 /* DEMOThirdViewController.h */,
+				274E3DD819AFA10B00A8A6D7 /* DEMOThirdViewController.m */,
+				274E3DE019AFB58C00A8A6D7 /* DEMOFourthViewController.h */,
+				274E3DE119AFB58C00A8A6D7 /* DEMOFourthViewController.m */,
 				3076CDF91809B59E00527E6C /* DEMOLeftMenuViewController.h */,
 				3076CDFA1809B59E00527E6C /* DEMOLeftMenuViewController.m */,
 				30DF13B018DE1B0C0018463C /* DEMORightMenuViewController.h */,
@@ -285,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				911A276F19A924220072BA4C /* Icon-40.png */,
+				274E3DDE19AFB31100A8A6D7 /* menuIcon.png */,
 				911A277019A924220072BA4C /* Icon-40@2x.png */,
 				911A277119A924220072BA4C /* Icon-60.png */,
 				911A277219A924220072BA4C /* Icon-60@2x.png */,
@@ -398,6 +419,7 @@
 				911A278C19A924230072BA4C /* MenuBackground.png in Resources */,
 				911A278219A924230072BA4C /* Icon-60.png in Resources */,
 				911A278019A924230072BA4C /* Icon-40.png in Resources */,
+				274E3DDF19AFB31100A8A6D7 /* menuIcon.png in Resources */,
 				3076CDDA1809B47200527E6C /* Images.xcassets in Resources */,
 				911A278819A924230072BA4C /* bluePuzzle.png in Resources */,
 				911A278719A924230072BA4C /* Icon-Small@2x.png in Resources */,
@@ -444,7 +466,9 @@
 				274E3CF319ABC0E500A8A6D7 /* ProfileViewController.m in Sources */,
 				3076CE0F1809B5C500527E6C /* UIViewController+RESideMenu.m in Sources */,
 				3076CE0E1809B5C500527E6C /* RESideMenu.m in Sources */,
+				274E3DE219AFB58C00A8A6D7 /* DEMOFourthViewController.m in Sources */,
 				3076CE0D1809B5C500527E6C /* RECommonFunctions.m in Sources */,
+				274E3DD919AFA10B00A8A6D7 /* DEMOThirdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +588,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/spayne/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RESideMenuStoryboardsExample/Matchr-Prefix.pch";
@@ -587,6 +612,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/spayne/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RESideMenuStoryboardsExample/Matchr-Prefix.pch";

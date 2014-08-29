@@ -9,6 +9,7 @@
 #import "DEMOLeftMenuViewController.h"
 #import "DEMOFirstViewController.h"
 #import "DEMOSecondViewController.h"
+#import "DEMOThirdViewController.h"
 #import "UIViewController+RESideMenu.h"
 #import <Parse/Parse.h>
 #import "LoginHandler.h"
@@ -80,7 +81,16 @@ LoginHandler *loginSession;
             
         //Rate Others Selected
         case 3:
+            [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"thirdViewController"]]
+                                                         animated:YES];
             
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        case 4:
+            [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"fourthViewController"]]
+                                                         animated:YES];
+            
+            [self.sideMenuViewController hideMenuViewController];
             break;
             
         //Settings Selected

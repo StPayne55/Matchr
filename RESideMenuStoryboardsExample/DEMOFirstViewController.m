@@ -12,8 +12,9 @@
 #import "FXBlurView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ProfileViewController.h"
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface DEMOFirstViewController () <UITextFieldDelegate, UIAlertViewDelegate>
+@interface DEMOFirstViewController () <UITextFieldDelegate, UIAlertViewDelegate, FBLoginViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *blueImage;
 @property (weak, nonatomic) IBOutlet UIImageView *pinkImage;
 @property (weak, nonatomic) IBOutlet FXBlurView *loginComponents;
@@ -28,6 +29,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextField *txtNewPassword;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicSnapPoint;
+@property (weak, nonatomic) IBOutlet FBLoginView *FBLoginView;
+@property (weak, nonatomic) IBOutlet UILabel *lblOr;
+@property (weak, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
 
 
 @property (weak, nonatomic) IBOutlet UITextField *txtConfirmPassword;
@@ -56,6 +60,7 @@ CGPoint signupViewOrigin;
 LoginHandler *loginObject;
 BOOL newUserViewIsVisible;
 PFUser *user;
+
 
 -(void)viewDidLoad{
     
@@ -96,6 +101,8 @@ PFUser *user;
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     }
+    
+    _FBLoginView.delegate = self;
     
 }
 
@@ -147,7 +154,7 @@ PFUser *user;
 }
 
 
-
+//as soon as the login handler successfully logs a user in, this method will be executed
 -(void)userLoggedIn{
     NSLog(@"User logged in....");
     
@@ -171,7 +178,14 @@ PFUser *user;
     profileView.profileAge.text = age;
     profileView.profileMajor.text = major;
     profileView.profilePreference.text = preference;
-
+    
+    for (UILabel *label in profileView.view.subviews){
+        if ([label isMemberOfClass:[UILabel class]]){
+            if (label == nil){
+                
+            }
+        }
+    }
     //hide login view
     PFImageView *profileImageView = [[PFImageView alloc] init];
     
@@ -184,32 +198,32 @@ PFUser *user;
         
         UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wood2.png"]];
         background.frame = self.view.frame;
-        UIImageView *profilePicImageViewFrame = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imageFrame.png"]];
-        [background addSubview:profilePicImageViewFrame];
         
         [self.view addSubview:background];
         [self.view sendSubviewToBack:background];
         [self.view addSubview:profileImageView];
-        [profilePicImageViewFrame setTransform:CGAffineTransformMakeScale(5, 5)];
         [self.view addSubview:profileInfo];
         [profileInfo setTransform:CGAffineTransformMakeScale(2.0f, 2.0f)];
         [self.view bringSubviewToFront:profileInfo];
+        [profileImageView setTransform:CGAffineTransformMakeScale(10.0f, 10.0f)];
+        profileImageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+        profileImageView.layer.shadowOffset = CGSizeMake(1.0, 5.0);
+        profileImageView.layer.shadowOpacity = .8;
         
-        
-        [UIView animateWithDuration:.7 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:.9 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+        [UIView animateWithDuration:.7 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:.5 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+            _FBLoginView.center = CGPointMake(_FBLoginView.center.x, 600);
             [profileInfo setTransform:CGAffineTransformMakeScale(1.0f, 1.0f)];
-            [profilePicImageViewFrame setTransform:CGAffineTransformMakeScale(1, 1)];
+            [profileImageView setTransform:CGAffineTransformMakeScale(1.0f, 1.0f)];
             profileImageView.frame = CGRectMake(self.view.center.x/4, background.center.y/2, 190, 190);
             profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2;
             profileImageView.clipsToBounds = YES;
             profileImageView.layer.masksToBounds = YES;
+            
+            [profileImageView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+            [profileImageView.layer setBorderWidth:4.0];
             profileImageView.center = _profilePicSnapPoint.center;
             [profileImageView setContentMode:UIViewContentModeScaleAspectFill];
             
-            profilePicImageViewFrame.frame = CGRectMake(self.view.center.x/4, self.view.center.y/2, 215, 225);
-            profilePicImageViewFrame.clipsToBounds = YES;
-            profilePicImageViewFrame.layer.masksToBounds = YES;
-            profilePicImageViewFrame.center = _profilePicSnapPoint.center;
         }completion:nil];
         
         [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:.6 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
@@ -360,7 +374,12 @@ PFUser *user;
     _signUpView.clipsToBounds = YES;
     _signUpView.dynamic = NO;
     _signUpButton.center = CGPointMake(_signUpView.center.x*1.5, _signUpButton.center.y);
-
+    
+    _FBLoginView.alpha = 0;
+    _FBLoginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+    
+    
+    
 }
 
 
@@ -368,18 +387,26 @@ PFUser *user;
     _logo.alpha = 1;
     
     
-    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:.9 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:.9 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
         _logo.center = logoOrigin;
         _blueImage.center = blueOrigin;
         _pinkImage.center = pinkOrigin;
         _loginComponents.alpha = 1;
        
     }completion:^(BOOL finished) {
-        [UIView animateWithDuration:.5 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:.9 options:nil animations:^{
+        [UIView animateWithDuration:.5 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:.9 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
             _loginComponents.center = loginOrigin;
             _userSignupButton.center = CGPointMake(self.view.center.x/2, _userSignupButton.center.y);
             _loginButton.center = CGPointMake(self.view.center.x/2, _loginButton.center.y);
-                    }completion:nil];
+            
+        }completion:^(BOOL finished){
+             [UIView animateWithDuration:3 delay:0 usingSpringWithDamping:.4 initialSpringVelocity:.9 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+//                 _lblOr.alpha = 1;
+//                 _FBLoginView.alpha = 1;
+             }completion:nil];
+            
+        }];
+        
     }];
 }
 
@@ -387,6 +414,7 @@ PFUser *user;
     for (UIView *view in self.loginComponents.subviews){
         [view resignFirstResponder];
     }
+    
     [self performSelector:@selector(logUserIn) withObject:self afterDelay:.5];
 }
 
@@ -474,6 +502,28 @@ PFUser *user;
     
 }
 
+#pragma mark Facebook Delegate Methods
+
+// This method will be called when the user information has been fetched
+// This method will be called when the user information has been fetched
+//- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
+//                            user:(id<FBGraphUser>)user {
+//    self.profilePictureView.profileID = user.objectID;
+//    self.profilePictureView.sizeToFit;
+//    self.lblOr.text = user.name;
+//    
+//    __block UIImage *image = nil;
+//    
+//    [self.view.subviews enumerateObjectsUsingBlock:^(NSObject *obj, NSUInteger idx, BOOL *stop) {
+//        if ([obj isMemberOfClass:[UIImageView class]]) {
+//            UIImageView *objImg = (UIImageView *)obj;
+//            image = objImg.image;
+//            *stop = YES;
+//        }
+//    }];
+//    
+//    
+//}
 
 
 
